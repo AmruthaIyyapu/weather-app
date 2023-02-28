@@ -44,7 +44,8 @@ function addCurrentDay() {
   h4.innerHTML = `${day}, ${month} ${date}`;
 }
 
-function updateCitynametemp() {
+function updateCitynametemp(event) {
+  event.preventDefault();
   let userCityInput = document.querySelector("#city-name");
   if (userCityInput.value) {
     let h3 = document.querySelector("h3");
