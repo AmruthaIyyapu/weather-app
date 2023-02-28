@@ -1,6 +1,6 @@
-function addCurrentDay() {
+function addCurrentDay(ms) {
   // event.preventDefault();
-  let todayDate = new Date();
+  let todayDate = new Date(ms);
 
   let days = [
     "Sunday",
@@ -28,20 +28,21 @@ function addCurrentDay() {
   ];
 
   let day = days[todayDate.getDay()];
-  let month = months[todayDate.getMonth()];
-  let date = todayDate.getDate();
-  // let htime = todayDate.getHours();
-  // if (htime < 10) {
-  //   htime = `0${htime}`;
-  // }
-  // let mtime = todayDate.getMinutes();
-  // if (mtime < 10) {
-  //   mtime = `0${mtime}`;
-  // }
+
+  // let month = months[todayDate.getMonth()];
+  // let date = todayDate.getDate();
+  let hours = todayDate.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = todayDate.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
 
   let h4 = document.querySelector("h4");
-  // h4.innerHTML = `${day}, ${month} ${date}, ${htime}:${mtime}`;
-  h4.innerHTML = `${day}, ${month} ${date}`;
+  h4.innerHTML = `Last updated: ${day} ${hours}:${minutes}`;
+  // h4.innerHTML = `${day}, ${month} ${date}`;
 }
 
 function updateCitynametemp(event) {
@@ -63,21 +64,24 @@ function updateCitynametemp(event) {
       let tempDescription = document.querySelector(
         ".present-stats .city-timetemp-info .tempdescription"
       );
-      // let x = response.weather;
-      // console.log(x);
       tempDescription.innerHTML = response.data.weather[0].description;
 
       let humid = document.querySelector(".Humidity");
       humid.innerHTML = response.data.main.humidity;
 
-      let maxTemp = document.querySelector(".max-temp");
-      maxTemp.innerHTML = Math.round(response.data.main.temp_max);
+      // let maxTemp = document.querySelector(".max-temp");
+      // maxTemp.innerHTML = Math.round(response.data.main.temp_max);
 
-      let minTemp = document.querySelector(".min-temp");
-      minTemp.innerHTML = Math.round(response.data.main.temp_min);
+      // let minTemp = document.querySelector(".min-temp");
+      // minTemp.innerHTML = Math.round(response.data.main.temp_min);
 
       let wind = document.querySelector(".Wind");
       wind.innerHTML = Math.round(response.data.wind.speed);
+
+      let dateElement = document.querySelector(".current-day");
+      // console.log(response.data.dt);
+      let time = response.data.dt * 1000;
+      dateElement.innerHTML = addCurrentDay(time);
     }
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${userCityInput.value}&units=metric`;
     axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemp);
@@ -125,9 +129,8 @@ let tempFar = document.querySelector("#temp-f");
 tempFar.addEventListener("click", changeTempToF);
 
 function showPresentTemp() {
-  addCurrentDay();
   function updateTemp(response) {
-    // console.log(response.data);
+    console.log(response.data);
     let newTemp = document.querySelector("#temp-value");
     let currentTemp = Math.round(response.data.main.temp);
     // console.log(currentTemp);
@@ -140,6 +143,17 @@ function showPresentTemp() {
       ".present-stats .city-timetemp-info .tempdescription"
     );
     tempDescription.innerHTML = response.data.weather[0].description;
+
+    let wind = document.querySelector(".Wind");
+    wind.innerHTML = Math.round(response.data.wind.speed);
+
+    let humid = document.querySelector(".Humidity");
+    humid.innerHTML = response.data.main.humidity;
+
+    let dateElement = document.querySelector(".current-day");
+    let time = response.data.dt * 1000;
+    // debugger;
+    dateElement.innerHTML = addCurrentDay(time);
   }
 
   function showPos(position) {
