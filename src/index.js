@@ -66,6 +66,18 @@ function updateCitynametemp(event) {
       // let x = response.weather;
       // console.log(x);
       tempDescription.innerHTML = response.data.weather[0].description;
+
+      let humid = document.querySelector(".Humidity");
+      humid.innerHTML = response.data.main.humidity;
+
+      let maxTemp = document.querySelector(".max-temp");
+      maxTemp.innerHTML = Math.round(response.data.main.temp_max);
+
+      let minTemp = document.querySelector(".min-temp");
+      minTemp.innerHTML = Math.round(response.data.main.temp_min);
+
+      let wind = document.querySelector(".Wind");
+      wind.innerHTML = Math.round(response.data.wind.speed);
     }
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${userCityInput.value}&units=metric`;
     axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemp);
@@ -75,28 +87,28 @@ function updateCitynametemp(event) {
 }
 
 function changeTempToF() {
-  let tempVariable = document.querySelector("#temp-type");
-  if (tempVariable.innerHTML != "F") {
+  let tempVariable = document.querySelector(".temp-type");
+  if (tempVariable.innerHTML !== "F") {
     let valueOfTemp = document.querySelector("#temp-value");
     let tempinF = valueOfTemp.innerHTML;
     tempinF = Number(tempinF);
     valueOfTemp.innerHTML = Math.round((tempinF * 9) / 5 + 32);
 
-    let updateTempType = document.querySelector("#temp-type");
+    let updateTempType = document.querySelector(".temp-type");
     updateTempType.innerHTML = "F";
   }
 }
 
 function changeTempToC() {
-  let tempVariable = document.querySelector("#temp-type");
+  let tempVariable = document.querySelector(".temp-type");
   // console.log(tempVariable);
-  if (tempVariable.innerHTML != "C") {
+  if (tempVariable.innerHTML !== "C") {
     let valueOfTemp = document.querySelector("#temp-value");
     let tempinC = valueOfTemp.innerHTML;
     tempinC = Number(tempinC);
     valueOfTemp.innerHTML = Math.round(((tempinC - 32) * 5) / 9);
 
-    let updateTempType = document.querySelector("#temp-type");
+    let updateTempType = document.querySelector(".temp-type");
     // console.log(typeof updateTempType);
     updateTempType.innerHTML = "C";
   }
