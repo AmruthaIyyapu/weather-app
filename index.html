@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>weather app</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@1,800&family=Gelasio:ital,wght@1,600&family=Satisfy&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="src/styles.css" />
+
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="container app-section">
+      <div class="row heading-section">
+        <div class="col-8"><h1>Weather App</h1></div>
+        <div class="col-2">
+          <div class="dropdown">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              ºC|ºF
+            </button>
+            <ul class="dropdown-menu">
+              <li id="temp-c"><a class="dropdown-item" href="#">ºC</a></li>
+              <li id="temp-f"><a class="dropdown-item" href="#">ºF</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-2">
+          <button
+            type="button"
+            class="btn btn-outline-success"
+            id="current-temp-button"
+          >
+            Current Temp
+          </button>
+        </div>
+      </div>
+
+      <form>
+        <input
+          type="search"
+          placeholder="Enter a city name"
+          class="form-control"
+          autocomplete="off"
+          autofocus="on"
+          id="city-name"
+        />
+        <input type="submit" value="Search" id="search-input" />
+      </form>
+
+      <div class="row present-stats">
+        <div class="col temperature">
+          <p>
+            <span id="temp-value">10</span>º<span id="temp-type">C</span><br />
+            ☀️
+          </p>
+        </div>
+        <div class="col city-timetemp-info">
+          <h3>Boston</h3>
+          <h4 class="current-day">Wed , Feb 15</h4>
+          <span class="tempdescription">Sunny</span>
+        </div>
+      </div>
+
+      <div class="row week-info">
+        <div class="col dailystats">
+          <ul>
+            <li class="day">Thu</li>
+            <li>Feb 16</li>
+            <li>-5º</li>
+            <li class="emojis">❄️</li>
+          </ul>
+        </div>
+        <div class="col dailystats">
+          <ul>
+            <li class="day">Fri</li>
+            <li>Feb 17</li>
+            <li>0º</li>
+            <li class="emojis">⛈</li>
+          </ul>
+        </div>
+        <div class="col dailystats">
+          <ul>
+            <li class="day">Sat</li>
+            <li>Feb 18</li>
+            <li>12º</li>
+            <li class="emojis">🌥</li>
+          </ul>
+        </div>
+
+        <div class="col dailystats">
+          <ul>
+            <li class="day">Sun</li>
+            <li>Feb 19</li>
+            <li>4º</li>
+            <li class="emojis">🌧</li>
+          </ul>
+        </div>
+
+        <div class="col dailystats">
+          <ul>
+            <li class="day">Mon</li>
+            <li>Feb 20</li>
+            <li>7º</li>
+            <li class="emojis">🌤</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <footer>
+      Coded by
+      <a href="https://www.shecodes.io/graduates/72624-amrutha-iyyapu">
+        Amrutha Iyyapu
+      </a>
+    </footer>
+    <script src="src/index.js"></script>
+  </body>
+</html>

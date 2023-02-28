@@ -1,0 +1,124 @@
+.app-section {
+  background: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
+  border: 1px solid rgb(229, 140, 140);
+  border-radius: 20px;
+  padding: 20px 40px;
+  margin: 100px auto;
+  height: 600px;
+  max-width: 800px;
+  box-shadow: 20px 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+  text-align: center;
+  font-family: "Fira Sans", sans-serif;
+  color: rgb(163, 35, 97);
+}
+
+form {
+  display: inline;
+  width: 100px;
+}
+#userinput-section {
+  margin: 20px;
+}
+
+#city-name {
+  font-size: 20px;
+  display: inline;
+}
+
+.search-button,
+#search-input {
+  padding: 1px 24px;
+  font-size: 22px;
+  border-radius: 20px;
+  border: none;
+  display: inline;
+  margin: 10px auto;
+}
+
+.present-stats {
+  margin: 40px 15px;
+  border: none;
+  border-radius: 20px;
+  background: radial-gradient(
+    circle at 18.7% 37.8%,
+    rgb(250, 250, 250) 0%,
+    rgb(225, 234, 238) 90%
+  );
+
+  /* background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%); */
+}
+
+#current-temp-button {
+  font-size: 14px;
+  font-weight: bold;
+  padding: 2px 20px;
+  margin: auto;
+  border-radius: 20px;
+}
+
+.temperature {
+  font-size: 55px;
+  text-align: center;
+}
+.city-timetemp-info {
+  position: relative;
+  top: 20px;
+}
+.city-timetemp-info h3 {
+  font-family: "Gelasio", serif;
+  font-size: 35px;
+}
+
+.city-timetemp-info h4 {
+  font-family: "Satisfy", cursive;
+  font-size: 29px;
+}
+
+.tempdescription {
+  font-size: 25px;
+  font-style: italic;
+}
+
+.week-info {
+  gap: 10px;
+}
+
+.dailystats {
+  margin: 20px;
+  border: none;
+  border-radius: 10px;
+  background: rgb(249, 252, 255);
+  max-width: 150px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0px;
+}
+
+.day {
+  font-family: "Satisfy", cursive;
+  font-size: 20px;
+}
+
+.emojis {
+  font-size: 20px;
+}
+
+footer {
+  text-align: center;
+  margin: 10px auto;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+footer a {
+  text-decoration: none;
+  color: palevioletred;
+}
+
+a:hover {
+  font-weight: bold;
+}
