@@ -68,7 +68,7 @@ function updateCitynametemp(event) {
       let icon = document.querySelector("#icon");
       icon.setAttribute(
         "src",
-        `http://openweathermap.org/img/wn/${iconId}@2x.png`
+        `https://openweathermap.org/img/wn/${iconId}@2x.png`
       );
       icon.setAttribute("alt", `${iconDesc}`);
 
