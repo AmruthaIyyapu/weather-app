@@ -62,6 +62,16 @@ function updateCitynametemp(event) {
       let valueOfTemp = document.querySelector("#temp-value");
       valueOfTemp.innerHTML = temperature;
 
+      let iconId = response.data.weather[0].icon;
+      let iconDesc = response.data.weather[0].description;
+
+      let icon = document.querySelector("#icon");
+      icon.setAttribute(
+        "src",
+        `http://openweathermap.org/img/wn/${iconId}@2x.png`
+      );
+      icon.setAttribute("alt", `${iconDesc}`);
+
       let tempDescription = document.querySelector(
         ".present-stats .city-timetemp-info .tempdescription"
       );
