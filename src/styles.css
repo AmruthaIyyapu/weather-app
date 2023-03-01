@@ -79,6 +79,7 @@ form {
 .city-timetemp-info {
   position: relative;
   top: 20px;
+  margin: 10px auto;
 }
 .city-timetemp-info h3 {
   font-family: "Gelasio", serif;

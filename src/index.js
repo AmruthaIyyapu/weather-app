@@ -154,6 +154,16 @@ function showPresentTemp() {
     );
     tempDescription.innerHTML = response.data.weather[0].description;
 
+    let iconId = response.data.weather[0].icon;
+    let iconDesc = response.data.weather[0].description;
+
+    let icon = document.querySelector("#icon");
+    icon.setAttribute(
+      "src",
+      `https://openweathermap.org/img/wn/${iconId}@2x.png`
+    );
+    icon.setAttribute("alt", `${iconDesc}`);
+
     let wind = document.querySelector(".Wind");
     wind.innerHTML = Math.round(response.data.wind.speed);
 
