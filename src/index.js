@@ -46,6 +46,42 @@ function addCurrentDay(ms) {
   // h4.innerHTML = `${day}, ${month} ${date}`;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let days = ["Thu", "Fri", "Sat", "Sun"];
+
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+      <div class="col-2">
+        <div class="weather-forecast-date">${day}</div>
+        <img
+          src="http://openweathermap.org/img/wn/50d@2x.png"
+          alt=""
+          width="42"
+        />
+        <div class="weather-forecast-temperatures">
+          <span class="weather-forecast-temperature-max"> 18° </span>
+          <span class="weather-forecast-temperature-min"> 12° </span>
+        </div>
+      </div>
+  `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+  console.log(forecastHTML);
+}
+
+function getForecast(coordinates) {
+  // console.log(coordinates);
+  let apikey = "ced3d576b797ba5539e509b6bb239e83";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apikey}&units=metric`;
+}
+
 function updateCitynametemp(event) {
   event.preventDefault();
   let userCityInput = document.querySelector("#city-name");
@@ -93,6 +129,8 @@ function updateCitynametemp(event) {
       // console.log(response.data.dt);
       let time = response.data.dt * 1000;
       dateElement.innerHTML = addCurrentDay(time);
+
+      getForecast(response.data.coord);
     }
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${userCityInput.value}&units=metric`;
     axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemp);
@@ -192,3 +230,5 @@ function showPresentTemp() {
 
 let button = document.querySelector("#current-temp-button");
 button.addEventListener("click", showPresentTemp);
+
+displayForecast();
