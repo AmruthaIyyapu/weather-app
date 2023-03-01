@@ -40,9 +40,9 @@ function addCurrentDay(ms) {
     minutes = `0${minutes}`;
   }
 
-  let p = document.querySelector(".current-day");
-  p.innerHTML = `Last updated: ${day} ${hours}:${minutes}`;
-  return `Last updated: ${day} ${hours}:${minutes}`;
+  let h4 = document.querySelector("h4");
+  h4.innerHTML = `Last updated: ${day} ${hours}:${minutes}`;
+  return h4.innerHTML;
   // h4.innerHTML = `${day}, ${month} ${date}`;
 }
 
@@ -120,6 +120,7 @@ function changeTempToC() {
 }
 
 let form = document.querySelector("form");
+// form.addEventListener("submit", addCurrentDay);
 form.addEventListener("submit", updateCitynametemp);
 
 let tempCelsius = document.querySelector("#temp-c");
@@ -130,7 +131,7 @@ tempFar.addEventListener("click", changeTempToF);
 
 function showPresentTemp() {
   function updateTemp(response) {
-    console.log(response.data);
+    // console.log(response.data);
     let newTemp = document.querySelector("#temp-value");
     let currentTemp = Math.round(response.data.main.temp);
     // console.log(currentTemp);

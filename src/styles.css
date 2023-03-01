@@ -81,9 +81,10 @@ form {
   font-size: 35px;
 }
 
-.city-timetemp-info h4 {
+.city-timetemp-info p {
   font-family: "Satisfy", cursive;
-  font-size: 29px;
+  font-size: 20px;
+  line-height: 2;
 }
 
 .tempdescription {
