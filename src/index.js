@@ -75,10 +75,10 @@ function displayForecast(response) {
             width="42"
           />
           <div class="weather-forecast-temperatures">
-            <span class="weather-forecast-temperature-max forecast-temp">⬆️${Math.round(
+            <span>⬆️</span><span class="weather-forecast-temperature-max forecast-temp">${Math.round(
               forecastDay.temp.max
             )} </span><span>° </span>
-            <span class="weather-forecast-temperature-min forecast-temp"> ⬇️${Math.round(
+            <span>⬇️</span><span class="weather-forecast-temperature-min forecast-temp">${Math.round(
               forecastDay.temp.min
             )}</span><span>° </span> 
           </div>
@@ -115,7 +115,6 @@ function changeTempToF() {
   forecastTemp.forEach((elem) => {
     let x = elem.innerHTML;
     x = Math.round((x * 9) / 5 + 32);
-    // console.log(x);
     elem.innerHTML = `${x}`;
   });
 }
@@ -138,7 +137,6 @@ function changeTempToC() {
   forecastTemp.forEach((elem) => {
     let x = elem.innerHTML;
     x = Math.round(((x - 32) * 5) / 9);
-    // console.log(x);
     elem.innerHTML = `${x}`;
   });
 }
