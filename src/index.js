@@ -231,10 +231,20 @@ function updateCitynametemp(response) {
   let h3 = document.querySelector("h3");
   cityName = response.data.name.toUpperCase();
   h3.innerHTML = `${cityName}`;
-  let temperature = Math.round(response.data.main.temp);
-  // console.log(temperature);
-  let valueOfTemp = document.querySelector("#temp-value");
-  valueOfTemp.innerHTML = temperature;
+
+  let x = document.querySelector(".temp-type");
+  if (x.innerHTML == "C") {
+    let temperature = Math.round(response.data.main.temp);
+    console.log(temperature);
+    let valueOfTemp = document.querySelector("#temp-value");
+    valueOfTemp.innerHTML = temperature;
+  } else {
+    let temperature = Math.round((response.data.main.temp * 5) / 9 + 32);
+    console.log(temperature);
+    let valueOfTemp = document.querySelector("#temp-value");
+    valueOfTemp.innerHTML = temperature;
+  }
+
   let iconId = response.data.weather[0].icon;
   let iconDesc = response.data.weather[0].description;
   let icon = document.querySelector("#icon");
