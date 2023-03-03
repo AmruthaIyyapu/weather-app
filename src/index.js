@@ -56,12 +56,11 @@ function formatDay(timestamp) {
 
 function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
-
+  let tempVariable = document.querySelector(".temp-type");
   let forecast = response.data.daily;
-
   let forecastHTML = `<div class="row">`;
   forecast.forEach(function (forecastDay, index) {
-    if (index < 6) {
+    if (index < 6 && tempVariable.innerHTML == "C") {
       forecastHTML =
         forecastHTML +
         `
@@ -85,6 +84,30 @@ function displayForecast(response) {
         </div>
     `;
     }
+    if (index < 6 && tempVariable.innerHTML == "F") {
+      forecastHTML =
+        forecastHTML +
+        `
+        <div class="col-2 dailystats">
+          <div class="weather-forecast-date">${formatDay(forecastDay.dt)}</div>
+          <img class="img" 
+            src="http://openweathermap.org/img/wn/${
+              forecastDay.weather[0].icon
+            }@2x.png"
+            alt=""
+            width="42"
+          />
+          <div class="weather-forecast-temperatures">
+            <span>⬆️</span><span class="weather-forecast-temperature-max forecast-temp">${Math.round(
+              (forecastDay.temp.max * 5) / 9 + 32
+            )} </span><span>° </span>
+            <span>⬇️</span><span class="weather-forecast-temperature-min forecast-temp">${Math.round(
+              (forecastDay.temp.min * 5) / 9 + 32
+            )}</span><span>° </span> 
+          </div>
+        </div>
+    `;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
@@ -99,8 +122,8 @@ function getForecast(coordinates) {
   axios.get(apiUrl).then(displayForecast);
 }
 
-function changeTempToF() {
-  // event.preventDefault();
+function changeTempToF(event) {
+  event.preventDefault();
   let tempVariable = document.querySelector(".temp-type");
   if (tempVariable.innerHTML !== "F") {
     let valueOfTemp = document.querySelector("#temp-value");
@@ -118,8 +141,8 @@ function changeTempToF() {
     elem.innerHTML = `${x}`;
   });
 }
-function changeTempToC() {
-  // event.preventDefault();
+function changeTempToC(event) {
+  event.preventDefault();
   let tempVariable = document.querySelector(".temp-type");
   // console.log(tempVariable);
   if (tempVariable.innerHTML !== "C") {
@@ -147,7 +170,8 @@ tempCelsius.addEventListener("click", changeTempToC);
 let tempFar = document.querySelector("#temp-f");
 tempFar.addEventListener("click", changeTempToF);
 
-function showPresentTemp() {
+function showPresentTemp(event) {
+  event.preventDefault();
   function updateTemp(response) {
     // console.log(response.data);
     let tempC = document.querySelector(".temp-type");
